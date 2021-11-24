@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label for="retail_price" class="form-label">Retail Price<span class="badge bg-danger label-required">Required</span></label>
-                <input type="number" class="form-control" id="retail_price" name="retail_price" min="0" pattern="^\d*(\.\d{0,2})?$" value="<?=$product[0]['retail_price']?>">
+                <input type="number" class="form-control" id="retail_price" name="retail_price" min="0" pattern="^\d*(\.\d{0,2})?$" step=".01" value="<?=$product[0]['retail_price']?>">
             </div>
             <div class="mb-3">
                 <label for="wholesell_price" class="form-label">Wholesale Price</label>
