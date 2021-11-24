@@ -34,7 +34,7 @@
                         <label for="" class="form-label">Image</label>
                         <img id="frame1" src="assets/images/no-image.jpg" class="form-control product-img mb-2 px-2 y-2">
                         <input type="file" id="image" name="image" class="form-control btn-img hidden" data-frame="frame1" accept="image/*">
-                        <label for="image" class="btn btn-sm btn-info text-light"><i class="fa fa-image"></i> Add Image</label>
+                        <label for="image" class="btn btn-sm btn-info text-light"><i class="fa fa-image"></i> Select Image</label>
                         <input type="hidden" class="frame1" name="is_img1_added" value="0">
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                         <label for="" class="form-label">Image (Optional)</label>
                         <img id="frame2" src="assets/images/no-image.jpg" class="form-control product-img mb-2 px-2 y-2">
                         <input type="file" id="image_2" name="image_2" class="form-control btn-img hidden" data-frame="frame2" accept="image/*">
-                        <label for="image_2" class="btn btn-sm btn-info text-light"><i class="fa fa-image"></i> Add Image</label>
+                        <label for="image_2" class="btn btn-sm btn-info text-light"><i class="fa fa-image"></i> Select Image</label>
                         <input type="hidden" class="frame2" name="is_img2_added" value="0">
                     </div>
                 </div>
@@ -82,6 +82,12 @@
                 wholesale_value = value - ((value*10)/100);
             }
             $("#wholesell_price").val(wholesale_value.toFixed(2));
+        });
+
+        $(".add-product-form").on('change', '.btn-img', function() {
+            var frame = $(this).data("frame");
+            document.getElementById(frame).src = URL.createObjectURL(event.target.files[0]);
+            $("."+frame).val('1');
         });
 
         $("#form-add").on('submit', (function(e) {
@@ -125,6 +131,7 @@
                             moment(data.data[0]['created_at']).format('yyyy-MM-DD hh:mm A'),
                             "<button type='button' class='btn btn-info text-light btn-sm edit-product' data-id='"+data.data[0]['id']+"' data-bs-toggle='modal' data-bs-target='#WholeSaleModal'><i class='fa fa-edit'></i> Edit</button>"
                         ] );
+                        dataTable.row(row).nodes().to$().addClass('product_'+data.data[0]['id']);
                         dataTable.row(row).column(0).nodes().to$().addClass('align-middle');
                         dataTable.row(row).column(1).nodes().to$().addClass('align-middle');
                         dataTable.row(row).column(2).nodes().to$().addClass('align-middle text-end');
@@ -137,7 +144,13 @@
                         setTimeout(function(){ $("body .success-alert").addClass("hidden"); }, 5000);
                         setTimeout(function(){ $(".app-loader").addClass("hidden"); $("#WholeSaleModal .btn-close").click(); }, 1500);
 
-                    } else if (data.status == "error") {
+                    } else if (data.status == "error" || data.status == "csrf_error") {
+                        $(".errors ul").html("<li>"+data.message+"</li>");
+                        $("body .error-alert .text").text(data.message);
+                        $("body .error-alert").removeClass("hidden");
+                        setTimeout(function(){ $("body .error-alert").addClass("hidden"); }, 5000);
+                        setTimeout(function(){ $(".app-loader").addClass("hidden"); }, 1500);
+                    } else {
                         $(".errors ul").html("<li>"+data.message+"</li>");
                         $("body .error-alert .text").text(data.message);
                         $("body .error-alert").removeClass("hidden");
@@ -151,12 +164,5 @@
                 }
             });
         }));
-
-        $(".add-product-form").on('change', '.btn-img', function() {
-            var frame = $(this).data("frame");
-            document.getElementById(frame).src = URL.createObjectURL(event.target.files[0]);
-            $("."+frame).val('1');
-        });
-
     });
 </script>

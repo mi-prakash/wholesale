@@ -55,6 +55,21 @@ class Product extends Dbh {
         return $id;
     }
 
+    protected function editProduct($id, $name, $retail_price, $wholesell_price, $publish_by, $status, $updated_at)
+    {
+        $db = $this->connect();
+        $query = $db->prepare("UPDATE products SET name = ?, retail_price = ?, wholesell_price = ?, publish_by = ?, status = ?, updated_at = ? WHERE id = ?;");
+
+        if (!$query->execute(array($name, $retail_price, $wholesell_price, $publish_by, $status, $updated_at, $id))) {
+            $query = null;
+            header("location: ../product-list.php?error=queryfailed");
+            exit;
+        }
+        $query = null;
+        
+        return $id;
+    }
+
     protected function setImage($image_path, $product_id, $column_name)
     {
         $db = $this->connect();

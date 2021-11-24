@@ -45,7 +45,7 @@
                         $x = 1;
                         foreach ($products as $product) {
                             ?>
-                            <tr>
+                            <tr class="product_<?=$product['id']?>">
                                 <td class="align-middle"><?=$x?></td>
                                 <td class="align-middle">
                                 <?php

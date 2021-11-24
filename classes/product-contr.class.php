@@ -42,6 +42,21 @@ class ProductContr extends Product {
         return $product_id;
     }
 
+    public function updateProduct($id)
+    {
+        if ($this->emptyInput() == false) {
+            $result = array(
+                "status" => "error",
+                "message" => "Please Input all the required fields"
+            );
+            return $result;
+        }
+
+        $product_id = $this->editProduct($id, $this->name, $this->retail_price, $this->wholesell_price, $this->publish_by, $this->status, $this->updated_at);
+
+        return $product_id;
+    }
+
     public function addImage($image_path, $product_id, $column_name)
     {
         return $this->setImage($image_path, $product_id, $column_name);
