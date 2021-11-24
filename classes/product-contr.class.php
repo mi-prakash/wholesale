@@ -68,6 +68,12 @@ class ProductContr extends Product {
         return $products;
     }
 
+    public static function getAllProducts()
+    {
+        $products = Product::getAllSellerProducts();
+        return $products;
+    }
+
     public static function getProductById($id)
     {
         $product = Product::getSellerProductById($id);

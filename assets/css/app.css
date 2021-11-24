@@ -84,3 +84,26 @@ footer {
     min-width: 250px;
     z-index: 9999;
 }
+.bd-placeholder-img {
+    height: 300px;
+    width: 100%;
+    margin: 0 auto;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+}
+.bd-placeholder-img .img {
+    height: 300px;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+}
+.bd-placeholder-img img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    margin: 0 auto;
+}

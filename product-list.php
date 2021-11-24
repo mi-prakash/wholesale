@@ -10,11 +10,11 @@
     $thisPage = "Product List";
 ?>
 
-<?php include_once $base_url."layouts/header.php"; ?>
-
-<?php include_once $base_url."layouts/navbar.php"; ?>
-
-<?php include_once $base_url."includes/product-content.inc.php"; ?>
+<?php 
+    include_once $base_url."layouts/header.php";
+    include_once $base_url."layouts/navbar.php";
+    include_once $base_url."includes/product-content.inc.php";
+?>
 
 <section class="py-4 text-center container">
     <div class="row">

@@ -7,9 +7,10 @@
     $thisPage = "Order List";
 ?>
 
-<?php include_once $base_url."layouts/header.php"; ?>
-
-<?php include_once $base_url."layouts/navbar.php"; ?>
+<?php 
+    include_once $base_url."layouts/header.php";
+    include_once $base_url."layouts/navbar.php";
+?>
 
 <section class="py-4 text-center container">
     <div class="row">

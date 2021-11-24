@@ -20,6 +20,23 @@ class Product extends Dbh {
         return $products;
     }
 
+    protected static function getAllSellerProducts()
+    {
+        $db = Dbh::connect();
+        $query = $db->prepare("SELECT * FROM products WHERE status = 'published' ORDER BY created_at DESC;");
+
+        if (!$query->execute()) {
+            $query = null;
+            header("location: ../index.php?error=queryfailed");
+            exit;
+        }
+
+        $products = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query = null;
+
+        return $products;
+    }
+
     protected static function getSellerProductById ($id)
     {
         $user_id = $_SESSION['id'];
