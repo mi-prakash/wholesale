@@ -1,0 +1,86 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 72px; /* Margin bottom by footer height */
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.hidden {
+    display: none !important;
+}
+.app-loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: #0000008f;
+    color: #fff;
+    z-index: 99999;
+}
+.app-loader .loader {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.nav-user-name {
+    position: relative;
+    top: -3px;
+    padding-left: 3px;
+}
+.dataTables_paginate .page-link {
+    position: relative;
+    display: block;
+    color: #fff;
+    background-color: #212529;
+    border-color: #3e4348;
+}
+.dataTables_paginate .page-link:hover {
+    z-index: 2;
+    color: #0dcaf0;
+    background-color: #3e4348;
+    border-color: #3e4348;
+}
+.dataTables_paginate .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+.dataTables_paginate .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #212529;
+    border-color: #3e4348;
+}
+.product-img {
+    width: 100%;
+    height: auto;
+}
+.label-required {
+    font-size: 0.65em;
+    font-weight: lighter;
+    letter-spacing: 0.4px;
+    padding: 1px 4px 2px;
+    position: relative;
+    top: -1px;
+    left: 5px;
+}
+.table-img {
+    height: 45px;
+    width: auto;
+}
+#app-alerts .alert {
+    position: fixed;
+    top: 15%;
+    right: 2%;
+    box-shadow: 3px 3px 10px #2125297d;
+    min-width: 250px;
+    z-index: 9999;
+}
