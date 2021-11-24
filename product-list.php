@@ -35,6 +35,7 @@
                         <th class="table-dark text-end">Retail Price</th>
                         <th class="table-dark text-end">Wholesale Price</th>
                         <th class="table-dark text-center">Status</th>
+                        <th class="table-dark text-center">Created At</th>
                         <th class="table-dark text-center" data-orderable="false">Action</th>
                     </tr>
                 </thead>
@@ -70,6 +71,9 @@
                                     <?php
                                     }
                                 ?>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <?=date("Y-m-d h:i A", strtotime($product['created_at']))?>
                                 </td>
                                 <td class="align-middle text-center">
                                     <button type="button" class="btn btn-info text-light btn-sm edit-product" data-id="<?=$product['id']?>" data-bs-toggle="modal" data-bs-target="#WholeSaleModal"><i class="fa fa-edit"></i> Edit</button>

@@ -65,7 +65,7 @@ if (isset($_POST)) {
                     $ext = pathinfo($img_name, PATHINFO_EXTENSION);
                     $save_path = $base_url."assets/images/products/"; // Folder where you wanna move the file.
                     $new_img2_name = "ID_".$product_id."_IMG2_".uniqid().".".$ext; // You are renaming the file here
-                    move_uploaded_file($_FILES['image_2']['tmp_name'], $save_path . $new_img2_name); // Move the uploaded file to the desired folder
+                    $move_img2 = move_uploaded_file($_FILES['image_2']['tmp_name'], $save_path . $new_img2_name); // Move the uploaded file to the desired folder
                     if(!$move_img2) {
                         $img2_failed = true;
                     } else {

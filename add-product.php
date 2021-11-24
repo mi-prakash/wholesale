@@ -103,8 +103,40 @@
                         $(".errors ul").html("");
                         $("body .success-alert .text").text(data.message);
                         $("body .success-alert").removeClass("hidden");
+
+                        var dataTable = $('#datatable').DataTable();
+                        var counter = dataTable.rows().count() + 1;
+                        var img_url = "assets/images/no-image.jpg";
+                        var badge_clr = "bg-danger";
+                        var status = "Unpublished";
+                        if (data.data[0]['image'] !== null) {
+                            img_url = data.data[0]['image'];
+                        }
+                        if (data.data[0]['status'] == 'published') {
+                            badge_clr = "bg-info";
+                            status = "Published";
+                        }
+                        var row = dataTable.row.add( [
+                            counter,
+                            "<img src='"+img_url+"' class='rounded table-img' alt='img'> "+data.data[0]['name'],
+                            data.data[0]['retail_price'],
+                            data.data[0]['wholesell_price'],
+                            "<span class='badge rounded-pill "+badge_clr+"'>"+status+"</span>",
+                            moment(data.data[0]['created_at']).format('yyyy-MM-DD hh:mm A'),
+                            "<button type='button' class='btn btn-info text-light btn-sm edit-product' data-id='"+data.data[0]['id']+"' data-bs-toggle='modal' data-bs-target='#WholeSaleModal'><i class='fa fa-edit'></i> Edit</button>"
+                        ] );
+                        dataTable.row(row).column(0).nodes().to$().addClass('align-middle');
+                        dataTable.row(row).column(1).nodes().to$().addClass('align-middle');
+                        dataTable.row(row).column(2).nodes().to$().addClass('align-middle text-end');
+                        dataTable.row(row).column(3).nodes().to$().addClass('align-middle text-end');
+                        dataTable.row(row).column(4).nodes().to$().addClass('align-middle text-center');
+                        dataTable.row(row).column(5).nodes().to$().addClass('align-middle text-center');
+                        dataTable.row(row).column(6).nodes().to$().addClass('align-middle text-center');
+                        dataTable.row(row).draw();
+                        
                         setTimeout(function(){ $("body .success-alert").addClass("hidden"); }, 5000);
                         setTimeout(function(){ $(".app-loader").addClass("hidden"); $("#WholeSaleModal .btn-close").click(); }, 1500);
+
                     } else if (data.status == "error") {
                         $(".errors ul").html("<li>"+data.message+"</li>");
                         $("body .error-alert .text").text(data.message);
@@ -112,17 +144,6 @@
                         setTimeout(function(){ $("body .error-alert").addClass("hidden"); }, 5000);
                         setTimeout(function(){ $(".app-loader").addClass("hidden"); }, 1500);
                     }
-                    // var dataTable = $('#datatable').DataTable();
-                    // var counter = dataTable.rows().count() + 1;
-                    // dataTable.row.add( [
-                    //     counter,
-                    //     "test",
-                    //     "test",
-                    //     "test",
-                    //     "test",
-                    //     "test"
-                    // ] ).draw( false );
-                    // console.log(dataTable.rows().count());
 
                     $(".save-product").attr("disabled", false);
 

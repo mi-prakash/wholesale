@@ -6,7 +6,7 @@ class Product extends Dbh {
     {
         $user_id = $_SESSION['id'];
         $db = Dbh::connect();
-        $query = $db->prepare("SELECT * FROM products WHERE publish_by = ? ORDER BY created_at DESC;");
+        $query = $db->prepare("SELECT * FROM products WHERE publish_by = ? ORDER BY created_at ASC;");
 
         if (!$query->execute(array($user_id))) {
             $query = null;
