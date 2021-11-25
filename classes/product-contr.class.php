@@ -4,7 +4,7 @@ class ProductContr extends Product {
 
     private $name;
     private $retail_price;
-    private $wholesell_price;
+    private $wholesale_price;
     private $image;
     private $image_2;
     private $publish_by;
@@ -12,11 +12,11 @@ class ProductContr extends Product {
     private $created_at;
     private $updated_at;
 
-    public function __construct($name, $retail_price, $wholesell_price, $publish_by, $status, $created_at = NULL, $updated_at = NULL)
+    public function __construct($name, $retail_price, $wholesale_price, $publish_by, $status, $created_at = NULL, $updated_at = NULL)
     {
         $this->name = $name;
         $this->retail_price = $retail_price;
-        $this->wholesell_price = $wholesell_price;
+        $this->wholesale_price = $wholesale_price;
         $this->publish_by = $publish_by;
         $this->status = $status;
         if ($created_at != NULL) {
@@ -37,7 +37,7 @@ class ProductContr extends Product {
             return $result;
         }
 
-        $product_id = $this->setProduct($this->name, $this->retail_price, $this->wholesell_price, $this->publish_by, $this->status, $this->created_at, $this->updated_at);
+        $product_id = $this->setProduct($this->name, $this->retail_price, $this->wholesale_price, $this->publish_by, $this->status, $this->created_at, $this->updated_at);
 
         return $product_id;
     }
@@ -52,7 +52,7 @@ class ProductContr extends Product {
             return $result;
         }
 
-        $product_id = $this->editProduct($id, $this->name, $this->retail_price, $this->wholesell_price, $this->publish_by, $this->status, $this->updated_at);
+        $product_id = $this->editProduct($id, $this->name, $this->retail_price, $this->wholesale_price, $this->publish_by, $this->status, $this->updated_at);
 
         return $product_id;
     }

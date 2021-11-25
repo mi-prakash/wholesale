@@ -29,7 +29,7 @@ class MyOrderContr extends MyOrder {
             return $result;
         } */
 
-        // $product_id = $this->setProduct($this->name, $this->retail_price, $this->wholesell_price, $this->publish_by, $this->status, $this->created_at, $this->updated_at);
+        // $product_id = $this->setProduct($this->name, $this->retail_price, $this->wholesale_price, $this->publish_by, $this->status, $this->created_at, $this->updated_at);
 
         // return $product_id;
     }

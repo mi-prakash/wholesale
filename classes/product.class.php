@@ -59,12 +59,12 @@ class Product extends Dbh {
         return $product;
     }
 
-    protected function setProduct($name, $retail_price, $wholesell_price, $publish_by, $status, $created_at, $updated_at)
+    protected function setProduct($name, $retail_price, $wholesale_price, $publish_by, $status, $created_at, $updated_at)
     {
         $db = $this->connect();
-        $query = $db->prepare("INSERT INTO products (name, retail_price, wholesell_price, publish_by, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?);");
+        $query = $db->prepare("INSERT INTO products (name, retail_price, wholesale_price, publish_by, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?);");
 
-        if (!$query->execute(array($name, $retail_price, $wholesell_price, $publish_by, $status, $created_at, $updated_at))) {
+        if (!$query->execute(array($name, $retail_price, $wholesale_price, $publish_by, $status, $created_at, $updated_at))) {
             $query = null;
             header("location: ../product-list.php?error=queryfailed");
             exit;
@@ -76,12 +76,12 @@ class Product extends Dbh {
         return $id;
     }
 
-    protected function editProduct($id, $name, $retail_price, $wholesell_price, $publish_by, $status, $updated_at)
+    protected function editProduct($id, $name, $retail_price, $wholesale_price, $publish_by, $status, $updated_at)
     {
         $db = $this->connect();
-        $query = $db->prepare("UPDATE products SET name = ?, retail_price = ?, wholesell_price = ?, publish_by = ?, status = ?, updated_at = ? WHERE id = ?;");
+        $query = $db->prepare("UPDATE products SET name = ?, retail_price = ?, wholesale_price = ?, publish_by = ?, status = ?, updated_at = ? WHERE id = ?;");
 
-        if (!$query->execute(array($name, $retail_price, $wholesell_price, $publish_by, $status, $updated_at, $id))) {
+        if (!$query->execute(array($name, $retail_price, $wholesale_price, $publish_by, $status, $updated_at, $id))) {
             $query = null;
             header("location: ../product-list.php?error=queryfailed");
             exit;

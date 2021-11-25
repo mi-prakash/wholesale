@@ -17,8 +17,8 @@
                 <input type="number" class="form-control" id="retail_price" name="retail_price" min="0" pattern="^\d*(\.\d{0,2})?$" step=".01">
             </div>
             <div class="mb-3">
-                <label for="wholesell_price" class="form-label">Wholesale Price</label>
-                <input type="text" class="form-control" id="wholesell_price" name="wholesell_price" value="0.00" readonly>
+                <label for="wholesale_price" class="form-label">Wholesale Price</label>
+                <input type="text" class="form-control" id="wholesale_price" name="wholesale_price" value="0.00" readonly>
             </div>
             <div class="mb-3">
                 <label for="status" class="form-label">Status<span class="badge bg-danger label-required">Required</span></label>
@@ -81,7 +81,7 @@
             if (value > 0) {
                 wholesale_value = value - ((value*10)/100);
             }
-            $("#wholesell_price").val(wholesale_value.toFixed(2));
+            $("#wholesale_price").val(wholesale_value.toFixed(2));
         });
 
         $(".add-product-form").on('change', '.btn-img', function() {
@@ -126,7 +126,7 @@
                             counter,
                             "<img src='"+img_url+"' class='rounded table-img' alt='img'> "+data.data[0]['name'],
                             data.data[0]['retail_price'],
-                            data.data[0]['wholesell_price'],
+                            data.data[0]['wholesale_price'],
                             "<span class='badge rounded-pill "+badge_clr+"'>"+status+"</span>",
                             moment(data.data[0]['created_at']).format('yyyy-MM-DD hh:mm A'),
                             "<button type='button' class='btn btn-info text-light btn-sm edit-product' data-id='"+data.data[0]['id']+"' data-bs-toggle='modal' data-bs-target='#WholeSaleModal'><i class='fa fa-edit'></i> Edit</button>"

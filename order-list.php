@@ -55,7 +55,7 @@
                                     <?=$order['product_name']?>
                                 </td>
                                 <td class="align-middle"><?=$order['purchased_by']?></td>
-                                <td class="align-middle text-end"><?=$order['wholesell_price']?></td>
+                                <td class="align-middle text-end"><?=$order['wholesale_price']?></td>
                                 <td class="align-middle text-center">
                                     <?=date("Y-m-d h:i A", strtotime($order['created_at']))?>
                                 </td>

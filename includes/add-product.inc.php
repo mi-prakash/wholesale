@@ -8,7 +8,7 @@ if (isset($_POST)) {
         // POST data is valid.
         $name = $_POST['name'];
         $retail_price = $_POST['retail_price'];
-        $wholesell_price = $_POST['wholesell_price'];
+        $wholesale_price = $_POST['wholesale_price'];
         $status = $_POST['status'];
         $is_img1_added = $_POST['is_img1_added'];
         $is_img2_added = $_POST['is_img2_added'];
@@ -21,7 +21,7 @@ if (isset($_POST)) {
         include_once $base_url."classes/product.class.php";
         include_once $base_url."classes/product-contr.class.php";
 
-        $product = new ProductContr($name, $retail_price, $wholesell_price, $publish_by, $status, $created_at, $updated_at);
+        $product = new ProductContr($name, $retail_price, $wholesale_price, $publish_by, $status, $created_at, $updated_at);
 
         // Running error handlers and user product
         $add_product = $product->addProduct();

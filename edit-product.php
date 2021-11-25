@@ -29,8 +29,8 @@
                 <input type="number" class="form-control" id="retail_price" name="retail_price" min="0" pattern="^\d*(\.\d{0,2})?$" step=".01" value="<?=$product[0]['retail_price']?>">
             </div>
             <div class="mb-3">
-                <label for="wholesell_price" class="form-label">Wholesale Price</label>
-                <input type="text" class="form-control" id="wholesell_price" name="wholesell_price" value="<?=$product[0]['wholesell_price']?>" readonly>
+                <label for="wholesale_price" class="form-label">Wholesale Price</label>
+                <input type="text" class="form-control" id="wholesale_price" name="wholesale_price" value="<?=$product[0]['wholesale_price']?>" readonly>
             </div>
             <div class="mb-3">
                 <label for="status" class="form-label">Status<span class="badge bg-danger label-required">Required</span></label>
@@ -105,7 +105,7 @@
             if (value > 0) {
                 wholesale_value = value - ((value*10)/100);
             }
-            $("#wholesell_price").val(wholesale_value.toFixed(2));
+            $("#wholesale_price").val(wholesale_value.toFixed(2));
         });
 
         $(".edit-product-form").on('change', '.btn-img', function() {
@@ -146,7 +146,7 @@
                         }
                         $(".product_"+data.data[0]['id']+" td:nth-child(2)").html("<img src='"+img_url+"' class='rounded table-img' alt='img'> "+data.data[0]['name']);
                         $(".product_"+data.data[0]['id']+" td:nth-child(3)").text(data.data[0]['retail_price']);
-                        $(".product_"+data.data[0]['id']+" td:nth-child(4)").text(data.data[0]['wholesell_price']);
+                        $(".product_"+data.data[0]['id']+" td:nth-child(4)").text(data.data[0]['wholesale_price']);
                         $(".product_"+data.data[0]['id']+" td:nth-child(5)").html("<span class='badge rounded-pill "+badge_clr+"'>"+status+"</span>");
                         
                         setTimeout(function(){ $("body .success-alert").addClass("hidden"); }, 5000);
