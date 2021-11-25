@@ -43,17 +43,7 @@
                                 <p class="published-by m-0 text-muted">by <span class="text-info p-uname"><?=$product['username']?></span></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <small class="text-dark p-price">
-                                        <?php
-                                        if ($_SESSION['type'] == 'customer') {
-                                        ?>
-                                            <b>Price</b> $<?=$product['retail_price']?>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <b>Price</b> $<span class="text-decoration-line-through"><?=$product['retail_price']?></span> <?=$product['wholesell_price']?>
-                                        <?php
-                                        }
-                                        ?> 
+                                        <b>Price</b> $<?=$product['retail_price']?>
                                     </small>
                                     <div class="btn-group">
                                         <?php
@@ -93,7 +83,7 @@
                 <p class="published-by m-0 text-muted">by <span class="text-info p-uname">User Name</span></p>
                 <div class="d-flex justify-content-between align-items-center">
                     <small class="text-dark p-price">
-                        <b>Price</b> $<span class="text-decoration-line-through">retail_price</span> wholesell_price
+                        <b>Price</b> $00.0
                     </small>
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-info text-light buy" data-id=""><i class="fa fa-shopping-bag"></i> Buy</button>
@@ -111,7 +101,6 @@
         var prod_html = $(".product-template");
 
         $("body").on('click', '.load-more', function() {
-            var user_type = "<?=$_SESSION['type']?>";
             var session_id = "<?=$_SESSION['id']?>";
             var offset = parseInt($("#offset").val());
             var prod_tmp = prod_html;
@@ -138,16 +127,11 @@
                             prod_tmp.find(".img").attr("style", "background-image: url('"+image_url+"')");
                             prod_tmp.find(".p-name").html("<b>"+$(this)[0].name+"</b>");
                             prod_tmp.find(".p-uname").text($(this)[0].username);
-                            if (user_type == "seller") {
-                                prod_tmp.find(".p-price").html("<b>Price</b> $<span class='text-decoration-line-through'>"+$(this)[0].retail_price+"</span> "+$(this)[0].wholesell_price);
-                            } else {
-                                prod_tmp.find(".p-price").html("<b>Price</b> $"+$(this)[0].retail_price);
-                            }
+                            prod_tmp.find(".p-price").html("<b>Price</b> $"+$(this)[0].retail_price);
                             prod_tmp.find(".buy").attr("data-id", $(this)[0].id);
                             if (session_id == $(this)[0].publish_by) {
                                 prod_tmp.find(".buy").addClass("disabled");
                             }
-                            
                             $(".home-products").append(prod_tmp.html());
                         });
 

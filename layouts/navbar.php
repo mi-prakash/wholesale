@@ -13,10 +13,11 @@
                     if($_SESSION['type'] == "seller") {
                     ?>
                     <li><a href="product-list.php" class="nav-link px-2 me-4 <?php if($thisPage == 'Product List') { ?>link-info<?php } else { ?>link-light<?php } ?>"><i class="fa fa-th-list"></i> Product List</a></li>
+                    <li><a href="order-list.php" class="nav-link px-2 me-4 <?php if($thisPage == 'Order List') { ?>link-info<?php } else { ?>link-light<?php } ?>"><i class="fa fa-list-ul"></i> Order List</a></li>
                     <?php
                     }
                 ?>
-                <li><a href="order-list.php" class="nav-link px-2 me-4 <?php if($thisPage == 'Order List') { ?>link-info<?php } else { ?>link-light<?php } ?>"><i class="fa fa-list-ul"></i> Order List</a></li>
+                <li><a href="my-order-list.php" class="nav-link px-2 me-4 <?php if($thisPage == 'My Order List') { ?>link-info<?php } else { ?>link-light<?php } ?>"><i class="fa fa-clipboard-list"></i> My Order List</a></li>
             </ul>
 
             <?php
