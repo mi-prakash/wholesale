@@ -6,7 +6,7 @@ class Order extends Dbh {
     {
         $user_id = $_SESSION['id'];
         $db = Dbh::connect();
-        $query = $db->prepare("SELECT orders.*, users.name AS purchased_by, products.name AS product_name, products.retail_price, products.wholesale_price, products.image
+        $query = $db->prepare("SELECT orders.*, users.name AS ordered_by, products.name AS product_name, products.retail_price, products.wholesale_price, products.image
                                 FROM orders
                                 JOIN users ON users.id = orders.user_id
                                 JOIN products ON products.id = orders.product_id

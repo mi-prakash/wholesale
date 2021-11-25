@@ -80,6 +80,12 @@ class ProductContr extends Product {
         return $product;
     }
 
+    public static function getProductDetailById($id)
+    {
+        $product = Product::getProductDetailById($id);
+        return $product;
+    }
+
     private function emptyInput()
     {
         $result = false;

@@ -40,6 +40,23 @@ class Product extends Dbh {
 
         return $products;
     }
+    
+    protected static function getProductDetailById ($id)
+    {
+        $db = Dbh::connect();
+        $query = $db->prepare("SELECT products.*, users.name AS username FROM products JOIN users ON users.id = products.publish_by WHERE products.id = ?;");
+
+        if (!$query->execute(array($id))) {
+            $query = null;
+            header("location: ../product-list.php?error=queryfailed");
+            exit;
+        }
+
+        $product = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query = null;
+
+        return $product;
+    }
 
     protected static function getSellerProductById ($id)
     {

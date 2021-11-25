@@ -19,4 +19,8 @@ class ProductContent {
     public static function get_all_products($offset = null) {
         return ProductContr::getAllProducts($offset);
     }
+
+    public static function get_product_detail_by_id($product_id) {
+        return ProductContr::getProductDetailById($product_id);
+    }
 }

@@ -39,7 +39,9 @@
                                 <div class="img" style="background-image: url('<?=$img_url?>')"></div>
                             </div>
                             <div class="card-body">
-                                <p class="card-text p-name"><b><?=$product['name']?></b></p>
+                                <a href="#" class="text-info product-link text-decoration-none" data-id="<?=$product['id']?>" data-bs-toggle="modal" data-bs-target="#WholeSaleModal">
+                                    <p class="card-text p-name"><b><?=$product['name']?></b></p>
+                                </a>
                                 <p class="published-by m-0 text-muted">by <span class="text-info p-uname"><?=$product['username']?></span></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <small class="text-dark p-price">
@@ -94,6 +96,20 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="WholeSaleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="WholeSaleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="WholeSaleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     $(document).ready(function() {
@@ -139,6 +155,23 @@
                         $(".load-more").attr("disabled", false);
                         $(".load-more svg").removeClass("fa-spin");
                     }
+                }
+            });
+        });
+
+        $("body").on('click', '.product-link', function(e) {
+            e.preventDefault();
+            var product_id = $(this).data("id");
+            $.ajax({
+                url: "product-detail.php",
+                type: "GET",
+                data: {product_id: product_id},
+                beforeSend: function() {
+                    $("#WholeSaleModal .modal-title").text("Product Detail");
+                    $("#WholeSaleModal .modal-body").html("<div class='text-center py-5'><span class='fa fa-refresh fa-3x fa-spin'></span></div>");
+                },
+                success: function(response) {
+                    $("#WholeSaleModal .modal-body").html(response);
                 }
             });
         });

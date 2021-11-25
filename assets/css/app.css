@@ -110,3 +110,8 @@ footer {
 .published-by {
     font-size: 12px;
 }
+.carousel-item img {
+    height: 400px;
+    width: auto;
+    margin: 0 auto;
+}
