@@ -23,7 +23,7 @@
             <label for="password">Password</label>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit"><i class="fa fa-sign-in-alt"></i> Log In</button>
+        <button class="w-100 btn btn-lg btn-info text-light" type="submit" name="submit"><i class="fa fa-sign-in-alt"></i> Log In</button>
         <div class="alert mt-3 text-success">
             <?php
                 if(isset($_GET["response"]) && $_GET["response"] == "signupsuccess") {
@@ -62,7 +62,7 @@
                 }
             ?>
         </div>
-        <p class="mt-4 mb-3 text-muted">Not a member? <a href="signup.php">Sign Up</a></p>
+        <p class="mt-4 mb-3 text-muted">Not a member? <a href="signup.php" class="text-info">Sign Up</a></p>
         <p class="mt-5 mb-3 text-muted">&copy; Wholesale by Mahmudul Islam</p>
     </form>
 </main>

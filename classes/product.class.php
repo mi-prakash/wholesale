@@ -20,10 +20,14 @@ class Product extends Dbh {
         return $products;
     }
 
-    protected static function getAllSellerProducts()
+    protected static function getAllSellerProducts($offset = null, $limit = 8)
     {
         $db = Dbh::connect();
-        $query = $db->prepare("SELECT * FROM products WHERE status = 'published' ORDER BY created_at DESC;");
+        if ($offset == null) {
+            $query = $db->prepare("SELECT products.*, users.name AS username FROM products JOIN users ON users.id = products.publish_by WHERE status = 'published' ORDER BY created_at DESC LIMIT $limit;");
+        } else {
+            $query = $db->prepare("SELECT products.*, users.name AS username FROM products JOIN users ON users.id = products.publish_by WHERE status = 'published' ORDER BY created_at DESC LIMIT $offset, $limit;");
+        }
 
         if (!$query->execute()) {
             $query = null;

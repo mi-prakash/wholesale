@@ -39,7 +39,7 @@
             <label for="password">Password</label>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit"><i class="fa fa-save"></i> Register</button>
+        <button class="w-100 btn btn-lg btn-info text-light" type="submit" name="submit"><i class="fa fa-save"></i> Register</button>
         <div class="errors mt-3 text-danger">
             <?php
                 if(isset($_GET["error"]) && $_GET["error"] == "emptyinput") {
@@ -64,7 +64,7 @@
                 }
             ?>
         </div>
-        <p class="mt-4 mb-3 text-muted">Go back to <a href="login.php">Log In</a></p>
+        <p class="mt-4 mb-3 text-muted">Go back to <a href="login.php" class="text-info">Log In</a></p>
         <p class="mt-5 mb-3 text-muted">&copy; Wholesale by Mahmudul Islam</p>
     </form>
 </main>

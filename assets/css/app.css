@@ -107,3 +107,6 @@ footer {
     max-height: 300px;
     margin: 0 auto;
 }
+.published-by {
+    font-size: 12px;
+}

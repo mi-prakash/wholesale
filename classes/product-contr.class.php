@@ -68,9 +68,9 @@ class ProductContr extends Product {
         return $products;
     }
 
-    public static function getAllProducts()
+    public static function getAllProducts($offset = null)
     {
-        $products = Product::getAllSellerProducts();
+        $products = Product::getAllSellerProducts($offset);
         return $products;
     }
 

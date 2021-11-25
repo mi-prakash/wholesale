@@ -16,7 +16,7 @@ class ProductContent {
         return ProductContr::getProductById($product_id);
     }
 
-    public static function get_all_products() {
-        return ProductContr::getAllProducts();
+    public static function get_all_products($offset = null) {
+        return ProductContr::getAllProducts($offset);
     }
 }
