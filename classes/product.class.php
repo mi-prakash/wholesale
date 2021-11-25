@@ -93,6 +93,21 @@ class Product extends Dbh {
         return $id;
     }
 
+    protected static function setProductForSeller($name, $retail_price, $wholesale_price, $image, $image_2, $publish_by, $status, $created_at, $updated_at)
+    {
+        $db = Dbh::connect();
+        $query = $db->prepare("INSERT INTO products (name, retail_price, wholesale_price, image, image_2, publish_by, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+
+        if (!$query->execute(array($name, $retail_price, $wholesale_price, $image, $image_2, $publish_by, $status, $created_at, $updated_at))) {
+            $query = null;
+            header("location: ../index.php?error=queryfailed");
+            exit;
+        }
+        $query = null;
+        
+        return true;
+    }
+
     protected function editProduct($id, $name, $retail_price, $wholesale_price, $publish_by, $status, $updated_at)
     {
         $db = $this->connect();

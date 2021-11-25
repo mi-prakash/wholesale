@@ -28,6 +28,7 @@
                     <tr>
                         <th class="table-dark">Order ID</th>
                         <th class="table-dark">Product Name</th>
+                        <th class="table-dark">Posted By</th>
                         <th class="table-dark text-end">Retail Price</th>
                         <th class="table-dark text-center">Ordered At</th>
                     </tr>
@@ -49,6 +50,7 @@
                                     <img src="<?=$image_url?>" class="rounded table-img" alt="img">
                                     <?=$order['product_name']?>
                                 </td>
+                                <td class="align-middle"><?=$order['posted_by']?></td>
                                 <td class="align-middle text-end">$<?=$order['retail_price']?></td>
                                 <td class="align-middle text-center">
                                     <?=date("Y-m-d h:i A", strtotime($order['created_at']))?>

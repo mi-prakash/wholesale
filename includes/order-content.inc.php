@@ -2,7 +2,7 @@
 
 $base_url = $_SERVER['DOCUMENT_ROOT'] ."/wholesale/";
 
-// Instantiate Product class
+// Instantiate Order class
 include_once $base_url."classes/dbh.class.php";
 include_once $base_url."classes/order.class.php";
 include_once $base_url."classes/order-contr.class.php";

@@ -86,6 +86,22 @@ class ProductContr extends Product {
         return $product;
     }
 
+    public static function setProductSeller($product, $user_id)
+    {
+        $name = $product["name"];
+        $retail_price = $product["retail_price"];
+        $wholesale_price = $product["wholesale_price"];
+        $image = $product["image"];
+        $image_2 = $product["image_2"];
+        $publish_by = $user_id;
+        $status = "published";
+        $created_at = date("Y-m-d H:i:s");
+        $updated_at = $created_at;
+        $set_product = Product::setProductForSeller($name, $retail_price, $wholesale_price, $image, $image_2, $publish_by, $status, $created_at, $updated_at);
+        
+        return $set_product;
+    }
+
     private function emptyInput()
     {
         $result = false;

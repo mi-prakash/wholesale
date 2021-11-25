@@ -19,21 +19,6 @@ class OrderContr extends Order {
         }
     }
 
-    public function addOrder()
-    {
-        /* if ($this->emptyInput() == false) {
-            $result = array(
-                "status" => "error",
-                "message" => "Please Input all the required fields"
-            );
-            return $result;
-        } */
-
-        // $product_id = $this->setProduct($this->name, $this->retail_price, $this->wholesale_price, $this->publish_by, $this->status, $this->created_at, $this->updated_at);
-
-        // return $product_id;
-    }
-
     public static function getOrders() 
     {
         $orders = Order::getAllOrders();

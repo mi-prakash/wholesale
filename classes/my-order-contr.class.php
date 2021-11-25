@@ -21,23 +21,20 @@ class MyOrderContr extends MyOrder {
 
     public function addMyOrder()
     {
-        /* if ($this->emptyInput() == false) {
-            $result = array(
-                "status" => "error",
-                "message" => "Please Input all the required fields"
-            );
-            return $result;
-        } */
-
-        // $product_id = $this->setProduct($this->name, $this->retail_price, $this->wholesale_price, $this->publish_by, $this->status, $this->created_at, $this->updated_at);
-
-        // return $product_id;
+        $add_order = $this->setMyOrder($this->user_id, $this->product_id, $this->created_at, $this->updated_at);
+        return $add_order;
     }
 
     public static function getMyOrders() 
     {
         $orders = MyOrder::getAllMyOrders();
         return $orders;
+    }
+
+    public function checkOrderValid()
+    {
+        $check_order = $this->checkOrderIsValid($this->user_id, $this->product_id);
+        return $check_order;
     }
 
 }

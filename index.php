@@ -5,6 +5,8 @@
         header("location: login.php");
     }
     $thisPage = "Home";
+    // Create a new CSRF token.
+    if (!isset($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = base64_encode(openssl_random_pseudo_bytes(32));
 ?>
 
 <?php 
@@ -177,7 +179,39 @@
         });
 
         $("body").on('click', '.buy', function() {
-            console.log('clicked');
+            var product_id = $(this).data("id");
+            var csrf_token = "<?=$_SESSION['csrf_token']?>";
+            $.ajax({
+                url: "includes/buy-product.inc.php",
+                type: "POST",
+                data: {
+                    csrf_token: csrf_token,
+                    product_id: product_id
+                },
+                beforeSend: function() {
+                    $(this).attr("disabled", true);
+                    $(".app-loader").removeClass("hidden");
+                },
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    setTimeout(function(){ $(".app-loader").addClass("hidden"); $("#WholeSaleModal .btn-close").click(); }, 1000);
+
+                    if (data.status == "success") {
+                        $("body .success-alert .text").text(data.message);
+                        $("body .success-alert").removeClass("hidden");
+                        setTimeout(function(){ $("body .success-alert").addClass("hidden"); }, 6000);
+                    } else if (data.status == "error" || data.status == "csrf_error") {
+                        $("body .error-alert .text").text(data.message);
+                        $("body .error-alert").removeClass("hidden");
+                        setTimeout(function(){ $("body .error-alert").addClass("hidden"); }, 5000);
+                    } else {
+                        $("body .error-alert .text").text(data.message);
+                        $("body .error-alert").removeClass("hidden");
+                        setTimeout(function(){ $("body .error-alert").addClass("hidden"); }, 5000);
+                    }
+                    $(this).attr("disabled", false);
+                }
+            });
         });
     });
 

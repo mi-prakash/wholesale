@@ -159,8 +159,6 @@
                     }
 
                     $(".save-product").attr("disabled", false);
-
-                    // location.reload();
                 }
             });
         }));

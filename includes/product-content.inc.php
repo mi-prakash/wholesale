@@ -23,4 +23,8 @@ class ProductContent {
     public static function get_product_detail_by_id($product_id) {
         return ProductContr::getProductDetailById($product_id);
     }
+
+    public static function set_product_for_seller($product, $user_id) {
+        return ProductContr::setProductSeller($product, $user_id);
+    }
 }

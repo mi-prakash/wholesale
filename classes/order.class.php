@@ -25,21 +25,4 @@ class Order extends Dbh {
         return $products;
     }
 
-    protected function setOrder($user_id, $product_id, $created_at, $updated_at)
-    {
-        $db = $this->connect();
-        /* $query = $db->prepare("INSERT INTO products (name, retail_price, wholesale_price, publish_by, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?);");
-
-        if (!$query->execute(array($name, $retail_price, $wholesale_price, $publish_by, $status, $created_at, $updated_at))) {
-            $query = null;
-            header("location: ../product-list.php?error=queryfailed");
-            exit;
-        }
-        $id = $db->lastInsertId();
-
-        $query = null;
-        
-        return $id; */
-    }
-
 }
