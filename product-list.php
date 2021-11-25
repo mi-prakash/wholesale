@@ -31,7 +31,7 @@
                 <thead>
                     <tr>
                         <th class="table-dark">#</th>
-                        <th class="table-dark">Name</th>
+                        <th class="table-dark">Product Name</th>
                         <th class="table-dark text-end">Retail Price</th>
                         <th class="table-dark text-end">Wholesale Price</th>
                         <th class="table-dark text-center">Status</th>

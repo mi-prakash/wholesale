@@ -4,13 +4,16 @@
     if (!isset($_SESSION['id'])) {
         header("location: login.php");
     }
-    $thisPage = "My Order List";
+    if($_SESSION['type'] == "customer") {
+        header("location: index.php");
+    }
+    $thisPage = "Order List";
 ?>
 
 <?php 
     include_once $base_url."layouts/header.php";
     include_once $base_url."layouts/navbar.php";
-    include_once $base_url."includes/my-order-content.inc.php";
+    include_once $base_url."includes/order-content.inc.php";
 ?>
 
 <section class="py-4 text-center container">
@@ -28,13 +31,15 @@
                     <tr>
                         <th class="table-dark">Order ID</th>
                         <th class="table-dark">Product Name</th>
-                        <th class="table-dark text-end">Retail Price</th>
+                        <th class="table-dark">Purchased By</th>
+                        <th class="table-dark text-end">Wholesale Price</th>
+
                         <th class="table-dark text-center">Ordered At</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        $orders = MyOrderContent::get_my_orders();
+                        $orders = OrderContent::get_orders();
                         foreach ($orders as $order) {
                             ?>
                             <tr class="order_<?=$order['id']?>">
@@ -49,7 +54,8 @@
                                     <img src="<?=$image_url?>" class="rounded table-img" alt="img">
                                     <?=$order['product_name']?>
                                 </td>
-                                <td class="align-middle text-end"><?=$order['retail_price']?></td>
+                                <td class="align-middle"><?=$order['purchased_by']?></td>
+                                <td class="align-middle text-end"><?=$order['wholesell_price']?></td>
                                 <td class="align-middle text-center">
                                     <?=date("Y-m-d h:i A", strtotime($order['created_at']))?>
                                 </td>
