@@ -145,8 +145,8 @@
                             status = "Published";
                         }
                         $(".product_"+data.data[0]['id']+" td:nth-child(2)").html("<img src='"+img_url+"' class='rounded table-img' alt='img'> "+data.data[0]['name']);
-                        $(".product_"+data.data[0]['id']+" td:nth-child(3)").text(data.data[0]['retail_price']);
-                        $(".product_"+data.data[0]['id']+" td:nth-child(4)").text(data.data[0]['wholesale_price']);
+                        $(".product_"+data.data[0]['id']+" td:nth-child(3)").text("$"+data.data[0]['retail_price']);
+                        $(".product_"+data.data[0]['id']+" td:nth-child(4)").text("$"+data.data[0]['wholesale_price']);
                         $(".product_"+data.data[0]['id']+" td:nth-child(5)").html("<span class='badge rounded-pill "+badge_clr+"'>"+status+"</span>");
                         
                         setTimeout(function(){ $("body .success-alert").addClass("hidden"); }, 5000);

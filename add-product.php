@@ -125,8 +125,8 @@
                         var row = dataTable.row.add( [
                             counter,
                             "<img src='"+img_url+"' class='rounded table-img' alt='img'> "+data.data[0]['name'],
-                            data.data[0]['retail_price'],
-                            data.data[0]['wholesale_price'],
+                            "$"+data.data[0]['retail_price'],
+                            "$"+data.data[0]['wholesale_price'],
                             "<span class='badge rounded-pill "+badge_clr+"'>"+status+"</span>",
                             moment(data.data[0]['created_at']).format('yyyy-MM-DD hh:mm A'),
                             "<button type='button' class='btn btn-info text-light btn-sm edit-product' data-id='"+data.data[0]['id']+"' data-bs-toggle='modal' data-bs-target='#WholeSaleModal'><i class='fa fa-edit'></i> Edit</button>"

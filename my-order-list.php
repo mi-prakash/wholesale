@@ -49,7 +49,7 @@
                                     <img src="<?=$image_url?>" class="rounded table-img" alt="img">
                                     <?=$order['product_name']?>
                                 </td>
-                                <td class="align-middle text-end"><?=$order['retail_price']?></td>
+                                <td class="align-middle text-end">$<?=$order['retail_price']?></td>
                                 <td class="align-middle text-center">
                                     <?=date("Y-m-d h:i A", strtotime($order['created_at']))?>
                                 </td>

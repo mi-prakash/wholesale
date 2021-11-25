@@ -57,8 +57,8 @@
                                     <img src="<?=$image_url?>" class="rounded table-img" alt="img">
                                     <?=$product['name']?>
                                 </td>
-                                <td class="align-middle text-end"><?=$product['retail_price']?></td>
-                                <td class="align-middle text-end"><?=$product['wholesale_price']?></td>
+                                <td class="align-middle text-end">$<?=$product['retail_price']?></td>
+                                <td class="align-middle text-end">$<?=$product['wholesale_price']?></td>
                                 <td class="align-middle text-center">
                                 <?php
                                     if($product['status'] == "published") {
