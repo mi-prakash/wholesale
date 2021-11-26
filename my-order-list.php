@@ -29,7 +29,7 @@
                         <th class="table-dark">Order ID</th>
                         <th class="table-dark">Product Name</th>
                         <th class="table-dark">Posted By</th>
-                        <th class="table-dark text-end">Retail Price</th>
+                        <th class="table-dark text-end">Price</th>
                         <th class="table-dark text-center">Ordered At</th>
                     </tr>
                 </thead>

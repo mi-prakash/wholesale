@@ -32,8 +32,8 @@
                         <th class="table-dark">Order ID</th>
                         <th class="table-dark">Product Name</th>
                         <th class="table-dark">Ordered By</th>
+                        <th class="table-dark text-end">Retail Price</th>
                         <th class="table-dark text-end">Wholesale Price</th>
-
                         <th class="table-dark text-center">Ordered At</th>
                     </tr>
                 </thead>
@@ -55,6 +55,7 @@
                                     <?=$order['product_name']?>
                                 </td>
                                 <td class="align-middle"><?=$order['ordered_by']?></td>
+                                <td class="align-middle text-end">$<?=$order['retail_price']?></td>
                                 <td class="align-middle text-end">$<?=$order['wholesale_price']?></td>
                                 <td class="align-middle text-center">
                                     <?=date("Y-m-d h:i A", strtotime($order['created_at']))?>
