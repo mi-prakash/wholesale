@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2021 at 07:14 AM
+-- Generation Time: Nov 26, 2021 at 10:25 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.3.29
 
@@ -31,6 +31,7 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `price` decimal(8,2) NOT NULL DEFAULT 0.00,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -39,17 +40,22 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 9, '2021-11-25 19:37:38', '2021-11-25 19:37:38'),
-(2, 2, 8, '2021-11-25 19:38:07', '2021-11-25 19:38:07'),
-(3, 2, 6, '2021-11-25 19:38:09', '2021-11-25 19:38:09'),
-(4, 2, 10, '2021-11-25 19:38:11', '2021-11-25 19:38:11'),
-(5, 2, 10, '2021-11-25 19:40:37', '2021-11-25 19:40:37'),
-(6, 2, 10, '2021-11-25 19:40:39', '2021-11-25 19:40:39'),
-(7, 2, 10, '2021-11-25 19:40:41', '2021-11-25 19:40:41'),
-(8, 2, 10, '2021-11-25 19:40:43', '2021-11-25 19:40:43'),
-(10, 2, 1, '2021-11-26 07:13:15', '2021-11-26 07:13:15'),
-(11, 2, 13, '2021-11-26 07:13:17', '2021-11-26 07:13:17');
+INSERT INTO `orders` (`id`, `user_id`, `product_id`, `price`, `created_at`, `updated_at`) VALUES
+(1, 1, 9, '2826.00', '2021-11-25 19:37:38', '2021-11-25 19:37:38'),
+(2, 2, 8, '449.99', '2021-11-25 19:38:07', '2021-11-25 19:38:07'),
+(3, 2, 6, '50.00', '2021-11-25 19:38:09', '2021-11-25 19:38:09'),
+(4, 2, 10, '3140.00', '2021-11-25 19:38:11', '2021-11-25 19:38:11'),
+(5, 2, 10, '3140.00', '2021-11-25 19:40:37', '2021-11-25 19:40:37'),
+(6, 2, 10, '3140.00', '2021-11-25 19:40:39', '2021-11-25 19:40:39'),
+(7, 2, 10, '3140.00', '2021-11-25 19:40:41', '2021-11-25 19:40:41'),
+(8, 2, 10, '3140.00', '2021-11-25 19:40:43', '2021-11-25 19:40:43'),
+(10, 2, 1, '1100.00', '2021-11-26 07:13:15', '2021-11-26 07:13:15'),
+(11, 2, 13, '499.00', '2021-11-26 07:13:17', '2021-11-26 07:13:17'),
+(12, 1, 13, '449.10', '2021-11-26 09:06:32', '2021-11-26 09:06:32'),
+(13, 2, 12, '130.00', '2021-11-26 10:08:24', '2021-11-26 10:08:24'),
+(14, 4, 5, '54.00', '2021-11-26 10:15:54', '2021-11-26 10:15:54'),
+(15, 4, 3, '1080.00', '2021-11-26 10:16:02', '2021-11-26 10:16:02'),
+(16, 2, 5, '60.00', '2021-11-26 10:24:18', '2021-11-26 10:24:18');
 
 -- --------------------------------------------------------
 
@@ -86,7 +92,10 @@ INSERT INTO `products` (`id`, `name`, `retail_price`, `wholesale_price`, `image`
 (9, 'Gigabyte GeForce RTX 3090 GAMING OC 24G Graphics Card', '3140.00', '2826.00', 'assets/images/products/ID_9_IMG1_619e31b324957.jpg', 'assets/images/products/ID_9_IMG2_619e31da76782.jpg', 4, 'published', '2021-11-24 13:36:03', NULL),
 (10, 'Gigabyte GeForce RTX 3090 GAMING OC 24G Graphics Card', '3140.00', '2826.00', 'assets/images/products/ID_9_IMG1_619e31b324957.jpg', 'assets/images/products/ID_9_IMG2_619e31da76782.jpg', 1, 'published', '2021-11-25 19:37:38', '2021-11-25 19:37:38'),
 (12, 'Ray Ban Justin 4165 Sunglasses', '130.00', '117.00', 'assets/images/products/ID_12_IMG1_61a07a03f1781.png', NULL, 4, 'published', '2021-11-26 07:06:48', NULL),
-(13, 'Galaxy A52s 5G', '499.00', '449.10', 'assets/images/products/ID_13_IMG1_61a07ad4a680b.webp', 'assets/images/products/ID_13_IMG2_61a07ad4ef4dc.jpg', 4, 'published', '2021-11-26 07:12:36', '2021-11-26 07:12:36');
+(13, 'Galaxy A52s 5G', '499.00', '449.10', 'assets/images/products/ID_13_IMG1_61a07ad4a680b.webp', 'assets/images/products/ID_13_IMG2_61a07ad4ef4dc.jpg', 4, 'published', '2021-11-26 07:12:36', '2021-11-26 07:12:36'),
+(14, 'Galaxy A52s 5G', '499.00', '449.10', 'assets/images/products/ID_13_IMG1_61a07ad4a680b.webp', 'assets/images/products/ID_13_IMG2_61a07ad4ef4dc.jpg', 1, 'published', '2021-11-26 09:06:32', '2021-11-26 09:06:32'),
+(15, 'Gaming Channel', '60.00', '54.00', 'assets/images/products/ID_5_IMG1_619e1407cd1b8.jpeg', NULL, 4, 'published', '2021-11-26 10:15:54', '2021-11-26 10:15:54'),
+(16, 'Sharp Fridge 400 Ltr', '1200.00', '1080.00', 'assets/images/products/ID_3_IMG1_619fa21a1b151.jpg', NULL, 4, 'published', '2021-11-26 10:16:02', '2021-11-26 10:16:02');
 
 -- --------------------------------------------------------
 
@@ -147,13 +156,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`

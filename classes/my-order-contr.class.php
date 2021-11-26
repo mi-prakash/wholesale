@@ -4,13 +4,15 @@ class MyOrderContr extends MyOrder {
 
     private $user_id;
     private $product_id;
+    private $price;
     private $created_at;
     private $updated_at;
 
-    public function __construct($user_id, $product_id, $created_at = NULL, $updated_at = NULL)
+    public function __construct($user_id, $product_id, $price, $created_at = NULL, $updated_at = NULL)
     {
         $this->user_id = $user_id;
         $this->product_id = $product_id;
+        $this->price = $price;
         if ($created_at != NULL) {
             $this->created_at = $created_at;
         }
@@ -21,7 +23,7 @@ class MyOrderContr extends MyOrder {
 
     public function addMyOrder()
     {
-        $add_order = $this->setMyOrder($this->user_id, $this->product_id, $this->created_at, $this->updated_at);
+        $add_order = $this->setMyOrder($this->user_id, $this->product_id, $this->price, $this->created_at, $this->updated_at);
         return $add_order;
     }
 

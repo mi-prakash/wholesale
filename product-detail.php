@@ -49,7 +49,19 @@
 <h5 class="mt-4 mb-4"><?=$product['name']?></h5>
 <div class="clearfix">
     <p class="mb-2">Posted by <span class="text-info"><?=$product['username']?></span></p>
-    <p class="mb-2"><b>Price</b> $<?=$product['retail_price']?></p>
+    <p class="mb-2">
+        <?php
+        if ($_SESSION['type'] == 'customer') {
+        ?>
+            <b>Price</b> $<?=$product['retail_price']?>
+        <?php
+        } else {
+        ?>
+            <b>Price</b> $<span class="text-decoration-line-through"><?=$product['retail_price']?></span> <?=$product['wholesale_price']?>
+        <?php
+        }
+        ?>
+    </p>
     <div class="text-center">
         <?php
             $disabled = "";

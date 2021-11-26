@@ -47,7 +47,17 @@
                                 <p class="published-by m-0 text-muted">by <span class="text-info p-uname"><?=$product['username']?></span></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <small class="text-dark p-price">
-                                        <b>Price</b> $<?=$product['retail_price']?>
+                                        <?php
+                                            if ($_SESSION['type'] == 'customer') {
+                                            ?>
+                                                <b>Price</b> $<?=$product['retail_price']?>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <b>Price</b> $<span class="text-decoration-line-through"><?=$product['retail_price']?></span> <?=$product['wholesale_price']?>
+                                            <?php
+                                            }
+                                        ?>
                                     </small>
                                     <div class="btn-group">
                                         <?php
@@ -83,7 +93,9 @@
                 <div class="img" style="background-image: url('assets/images/no-image.jpg')"></div>
             </div>
             <div class="card-body">
-                <p class="card-text p-name"><b>Name</b></p>
+                <a href="#" class="text-info product-link text-decoration-none" data-id="" data-bs-toggle="modal" data-bs-target="#WholeSaleModal">
+                    <p class="card-text p-name"><b>Name</b></p>
+                </a>
                 <p class="published-by m-0 text-muted">by <span class="text-info p-uname">User Name</span></p>
                 <div class="d-flex justify-content-between align-items-center">
                     <small class="text-dark p-price">
@@ -119,6 +131,7 @@
         var prod_html = $(".product-template");
 
         $("body").on('click', '.load-more', function() {
+            var user_type = "<?=$_SESSION['type']?>";
             var session_id = "<?=$_SESSION['id']?>";
             var offset = parseInt($("#offset").val());
             var prod_tmp = prod_html;
@@ -143,9 +156,14 @@
                                 var image_url = "assets/images/no-image.jpg";
                             }
                             prod_tmp.find(".img").attr("style", "background-image: url('"+image_url+"')");
+                            prod_tmp.find(".product-link").attr("data-id", $(this)[0].id);
                             prod_tmp.find(".p-name").html("<b>"+$(this)[0].name+"</b>");
                             prod_tmp.find(".p-uname").text($(this)[0].username);
-                            prod_tmp.find(".p-price").html("<b>Price</b> $"+$(this)[0].retail_price);
+                            if (user_type == "seller") {
+                                prod_tmp.find(".p-price").html("<b>Price</b> $<span class='text-decoration-line-through'>"+$(this)[0].retail_price+"</span> "+$(this)[0].wholesale_price);
+                            } else {
+                                prod_tmp.find(".p-price").html("<b>Price</b> $"+$(this)[0].retail_price);
+                            }
                             prod_tmp.find(".buy").attr("data-id", $(this)[0].id);
                             if (session_id == $(this)[0].publish_by) {
                                 prod_tmp.find(".buy").addClass("disabled");

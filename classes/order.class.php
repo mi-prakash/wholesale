@@ -11,7 +11,7 @@ class Order extends Dbh {
                                 JOIN users ON users.id = orders.user_id
                                 JOIN products ON products.id = orders.product_id
                                 WHERE products.publish_by = ? 
-                                ORDER BY created_at DESC;");
+                                ORDER BY orders.created_at DESC;");
 
         if (!$query->execute(array($user_id))) {
             $query = null;

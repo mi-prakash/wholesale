@@ -51,7 +51,7 @@
                                     <?=$order['product_name']?>
                                 </td>
                                 <td class="align-middle"><?=$order['posted_by']?></td>
-                                <td class="align-middle text-end">$<?=$order['retail_price']?></td>
+                                <td class="align-middle text-end">$<?=$order['price']?></td>
                                 <td class="align-middle text-center">
                                     <?=date("Y-m-d h:i A", strtotime($order['created_at']))?>
                                 </td>
@@ -67,7 +67,9 @@
 
 <script>
     $(document).ready(function() {
-        var dataTable = $('#datatable').DataTable();
+        var dataTable = $('#datatable').DataTable({
+            "order": [[ 0, "desc" ]]
+        });
     });
 </script>
 <?php include_once $base_url."layouts/footer.php"; ?>

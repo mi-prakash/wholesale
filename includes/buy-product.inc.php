@@ -34,7 +34,12 @@ if (isset($_POST)) {
         // Check if product is valid for order
         $created_at = date("Y-m-d H:i:s");
         $updated_at = $created_at;
-        $my_order = new MyOrderContr($user_id, $product_id, $created_at, $updated_at);
+        if ($user_type == "customer") {
+            $price = $product["retail_price"];
+        } else {
+            $price = $product["wholesale_price"];
+        }
+        $my_order = new MyOrderContr($user_id, $product_id, $price, $created_at, $updated_at);
         $check_order = $my_order->checkOrderValid();
 
         if (!$check_order) {

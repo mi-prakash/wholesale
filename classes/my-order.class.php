@@ -44,12 +44,12 @@ class MyOrder extends Dbh {
         return $check_order;
     }
 
-    protected function setMyOrder($user_id, $product_id, $created_at, $updated_at)
+    protected function setMyOrder($user_id, $product_id, $price, $created_at, $updated_at)
     {
         $db = $this->connect();
-        $query = $db->prepare("INSERT INTO orders (user_id, product_id, created_at, updated_at) VALUES (?, ?, ?, ?);");
+        $query = $db->prepare("INSERT INTO orders (user_id, product_id, price,  created_at, updated_at) VALUES (?, ?, ?, ?, ?);");
 
-        if (!$query->execute(array($user_id, $product_id, $created_at, $updated_at))) {
+        if (!$query->execute(array($user_id, $product_id, $price, $created_at, $updated_at))) {
             $query = null;
             header("location: ../product-list.php?error=queryfailed");
             exit;
